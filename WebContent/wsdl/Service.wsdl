@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Connection" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Connection" xmlns:intf="http://Connection" xmlns:tns1="http://beans" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Connection" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans"/>
+   <element name="deleteElements">
+    <complexType>
+     <sequence>
+      <element name="elementname" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteElementsResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteElementsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="login">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="loginResponse">
+    <complexType>
+     <sequence>
+      <element name="loginReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviews">
+    <complexType>
+     <sequence>
+      <element name="element" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getReviewsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getReviewsReturn" type="tns1:ReviewBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayAllcategories">
+    <complexType/>
+   </element>
+   <element name="displayAllcategoriesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="displayAllcategoriesReturn" type="tns1:Categories"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="selectAllUsers">
+    <complexType/>
+   </element>
+   <element name="selectAllUsersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="selectAllUsersReturn" type="tns1:UserDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCategories">
+    <complexType>
+     <sequence>
+      <element name="category" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCategoriesResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteCategoriesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchElements">
+    <complexType>
+     <sequence>
+      <element name="category" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchElementsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="fetchElementsReturn" type="tns1:ElementsBean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUp">
+    <complexType>
+     <sequence>
+      <element name="firstName" type="xsd:string"/>
+      <element name="lastName" type="xsd:string"/>
+      <element name="email" type="xsd:string"/>
+      <element name="pwd" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUpResponse">
+    <complexType>
+     <sequence>
+      <element name="signUpReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addElements">
+    <complexType>
+     <sequence>
+      <element name="elementname" type="xsd:string"/>
+      <element name="elementdescription" type="xsd:string"/>
+      <element name="categoryname" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addElementsResponse">
+    <complexType>
+     <sequence>
+      <element name="addElementsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addReview">
+    <complexType>
+     <sequence>
+      <element name="rating" type="xsd:int"/>
+      <element name="comments" type="xsd:string"/>
+      <element name="reviewedby" type="xsd:string"/>
+      <element name="elementname" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addReviewResponse">
+    <complexType>
+     <sequence>
+      <element name="addReviewReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCategories">
+    <complexType>
+     <sequence>
+      <element name="category" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCategoriesResponse">
+    <complexType>
+     <sequence>
+      <element name="addCategoriesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="ReviewBean">
+    <sequence>
+     <element name="comments" nillable="true" type="xsd:string"/>
+     <element name="rating" type="xsd:int"/>
+     <element name="reviewedBy" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Categories">
+    <sequence>
+     <element name="categoryName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserDetails">
+    <sequence>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="fname" nillable="true" type="xsd:string"/>
+     <element name="lname" nillable="true" type="xsd:string"/>
+     <element name="loginTime" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="ElementsBean">
+    <sequence>
+     <element name="elementName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addElementsResponse">
+
+      <wsdl:part element="impl:addElementsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addElementsRequest">
+
+      <wsdl:part element="impl:addElements" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part element="impl:login" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCategoriesResponse">
+
+      <wsdl:part element="impl:addCategoriesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addReviewResponse">
+
+      <wsdl:part element="impl:addReviewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchElementsRequest">
+
+      <wsdl:part element="impl:fetchElements" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCategoriesRequest">
+
+      <wsdl:part element="impl:addCategories" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchElementsResponse">
+
+      <wsdl:part element="impl:fetchElementsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteElementsResponse">
+
+      <wsdl:part element="impl:deleteElementsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCategoriesRequest">
+
+      <wsdl:part element="impl:deleteCategories" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReviewsResponse">
+
+      <wsdl:part element="impl:getReviewsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayAllcategoriesResponse">
+
+      <wsdl:part element="impl:displayAllcategoriesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCategoriesResponse">
+
+      <wsdl:part element="impl:deleteCategoriesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpResponse">
+
+      <wsdl:part element="impl:signUpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteElementsRequest">
+
+      <wsdl:part element="impl:deleteElements" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part element="impl:loginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpRequest">
+
+      <wsdl:part element="impl:signUp" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectAllUsersResponse">
+
+      <wsdl:part element="impl:selectAllUsersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayAllcategoriesRequest">
+
+      <wsdl:part element="impl:displayAllcategories" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getReviewsRequest">
+
+      <wsdl:part element="impl:getReviews" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addReviewRequest">
+
+      <wsdl:part element="impl:addReview" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="selectAllUsersRequest">
+
+      <wsdl:part element="impl:selectAllUsers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Service">
+
+      <wsdl:operation name="deleteElements">
+
+         <wsdl:input message="impl:deleteElementsRequest" name="deleteElementsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteElementsResponse" name="deleteElementsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReviews">
+
+         <wsdl:input message="impl:getReviewsRequest" name="getReviewsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getReviewsResponse" name="getReviewsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayAllcategories">
+
+         <wsdl:input message="impl:displayAllcategoriesRequest" name="displayAllcategoriesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayAllcategoriesResponse" name="displayAllcategoriesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="selectAllUsers">
+
+         <wsdl:input message="impl:selectAllUsersRequest" name="selectAllUsersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:selectAllUsersResponse" name="selectAllUsersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCategories">
+
+         <wsdl:input message="impl:deleteCategoriesRequest" name="deleteCategoriesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteCategoriesResponse" name="deleteCategoriesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchElements">
+
+         <wsdl:input message="impl:fetchElementsRequest" name="fetchElementsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:fetchElementsResponse" name="fetchElementsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdl:input message="impl:signUpRequest" name="signUpRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signUpResponse" name="signUpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addElements">
+
+         <wsdl:input message="impl:addElementsRequest" name="addElementsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addElementsResponse" name="addElementsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addReview">
+
+         <wsdl:input message="impl:addReviewRequest" name="addReviewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addReviewResponse" name="addReviewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCategories">
+
+         <wsdl:input message="impl:addCategoriesRequest" name="addCategoriesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCategoriesResponse" name="addCategoriesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceSoapBinding" type="impl:Service">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="deleteElements">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteElementsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteElementsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getReviews">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getReviewsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getReviewsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayAllcategories">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayAllcategoriesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayAllcategoriesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="selectAllUsers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="selectAllUsersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="selectAllUsersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCategories">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteCategoriesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteCategoriesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchElements">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fetchElementsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fetchElementsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signUpRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signUpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addElements">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addElementsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addElementsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addReview">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addReviewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addReviewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCategories">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCategoriesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCategoriesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceService">
+
+      <wsdl:port binding="impl:ServiceSoapBinding" name="Service">
+
+         <wsdlsoap:address location="http://localhost:8080/YelpApplication/services/Service"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
